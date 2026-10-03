@@ -1,6 +1,9 @@
 name: Build
 'on':
-  - push
+  push:
+    branches:
+      - '**'
+  workflow_call:
 jobs:
   # Linux build job (matrixed by OS and compiler)  
   linux-build:

@@ -1,0 +1,29 @@
+name: Release
+'on':
+  push:
+    tags:
+      - '*'
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: download binaries
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: rename binaries per platform
+        run: |
+          mkdir release-assets
+          for dir in artifacts/*/; do
+            name=$(basename "$dir")
+            cp "$dir/pfaedle" "release-assets/$name"
+          done
+      - name: create release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release-assets/*
