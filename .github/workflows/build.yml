@@ -19,6 +19,11 @@ jobs:
         run: cd build && make
       - name: tests
         run: cd build && ctest --output-on-failure
+      - name: upload binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: pfaedle-ubuntu-latest-gcc
+          path: build/src/pfaedle/pfaedle
   ubuntu-latest-build-clang:
     runs-on: ubuntu-latest
     steps:
@@ -40,6 +45,11 @@ jobs:
         run: cd build && make
       - name: tests
         run: cd build && ctest --output-on-failure
+      - name: upload binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: pfaedle-ubuntu-latest-clang
+          path: build/src/pfaedle/pfaedle
   macos-latest-build:
     runs-on: macOS-latest
     steps:
@@ -55,6 +65,11 @@ jobs:
         run: cd build && make
       - name: tests
         run: cd build && ctest --output-on-failure
+      - name: upload binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: pfaedle-macos-latest
+          path: build/src/pfaedle/pfaedle
   macos-15-build:
     runs-on: macOS-15
     steps:
@@ -70,3 +85,8 @@ jobs:
         run: cd build && make
       - name: tests
         run: cd build && ctest --output-on-failure
+      - name: upload binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: pfaedle-macos-15
+          path: build/src/pfaedle/pfaedle
