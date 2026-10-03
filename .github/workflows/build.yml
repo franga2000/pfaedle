@@ -23,7 +23,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pfaedle-ubuntu-latest-gcc
-          path: build/src/pfaedle/pfaedle
+          path: build/pfaedle
   ubuntu-latest-build-clang:
     runs-on: ubuntu-latest
     steps:
@@ -49,7 +49,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pfaedle-ubuntu-latest-clang
-          path: build/src/pfaedle/pfaedle
+          path: build/pfaedle
   macos-latest-build:
     runs-on: macOS-latest
     steps:
@@ -69,7 +69,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pfaedle-macos-latest
-          path: build/src/pfaedle/pfaedle
+          path: build/pfaedle
   macos-15-build:
     runs-on: macOS-15
     steps:
@@ -89,4 +89,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pfaedle-macos-15
-          path: build/src/pfaedle/pfaedle
+          path: build/pfaedle
