@@ -41,11 +41,12 @@ jobs:
         run: cd build && make
       - name: tests
         run: cd build && ctest --output-on-failure
+      - name: rename binary
+        run: cp build/pfaedle build/pfaedle-${{ matrix.os }}-${{ matrix.compiler }}
       - name: upload binary
         uses: actions/upload-artifact@v7
         with:
-          name: pfaedle-${{ matrix.os }}-${{ matrix.compiler }}
-          path: build/pfaedle
+          path: build/pfaedle-${{ matrix.os }}-${{ matrix.compiler }}
           archive: false
 
   # macOS build job (matrixed by macOS version)
@@ -68,9 +69,10 @@ jobs:
         run: cd build && make
       - name: tests
         run: cd build && ctest --output-on-failure
+      - name: rename binary
+        run: cp build/pfaedle build/pfaedle-${{ matrix.os }}
       - name: upload binary
         uses: actions/upload-artifact@v7
         with:
-          name: pfaedle-${{ matrix.os }}
-          path: build/pfaedle
+          path: build/pfaedle-${{ matrix.os }}
           archive: false
